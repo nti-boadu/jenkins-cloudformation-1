@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Create Prod Stack') {
             steps {
-            sh "aws cloudformation create-stack ----stack-name ventura-prod-infra-v1 --template-body file://ventura-prod-env-infra.yaml --parameters file://ventura-infra-parametafile.json --region 'us-east-1'"
+            sh "aws cloudformation create-stack --stack-name ventura-prod-infra-v1 --template-body file://ventura-prod-env-infra.yaml --parameters file://ventura-infra-parametafile.json --region 'us-east-1'"
             }
         }
         // stage('Update Prod Stack') {
@@ -44,7 +44,7 @@ pipeline {
              echo 'Slack Notifications.'
              slackSend channel: '#cloud-formation-jenkins-cicd', //update and provide your channel name
                 color: COLOR_MAP[currentBuild.currentResult],
-                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+                message: "*${https://us02web.zoom.us/rec/share/-kGFaMehyATkQhfjiAc9gtiwcPBIY64fKO6xT_DvfF5thzGFPl6YOqfC9RRzH0bB.oriANmaLbBRgY0lz?startTime=1664030719000.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
             }
         }
 }
